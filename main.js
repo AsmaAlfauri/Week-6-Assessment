@@ -38,14 +38,25 @@ Ex: addKeyPowerIndex(arrOfObj2)
 ]   
 */
 
-function addKeyPowerIndex() {
-  // WRITE YOUR CODE UNDER THIS LINE  
-
+function addKeyPowerIndex(arr) {
+  arr.forEach(
+    function (elem, index) {
+      elem[index]=index**2
+        // add new key in object in each element
+    })
+  return arr
 }
-
-
-
-
+array = [{
+    a: 'cat'
+  },
+  {
+    b: 'dog'
+  },
+  {
+    c: 'duck'
+  }
+]
+console.log(addKeyPowerIndex(array))
 
 
 
@@ -57,17 +68,23 @@ and return a new array after will decrease this number
 from each element in this array
 
 var arrOfNum1 = [77,5,33]
-Ex: decreseBy(arrOfnum1,10)
+Ex: decreseBy(arrOfNum1,10)
 => [67,-5,23]
 
 Ex: decreseBy(arrOfNum1,-6)
 => [83, 11, 39]
 */
 
-function decreseBy() {
-  // WRITE YOUR CODE UNDER THIS LINE 
-
+function decreseBy(array, num) {
+  var result = []
+  return array.map(
+    function (elem) {
+      result = elem - num
+      return result
+    }
+  )
 }
+console.log(decreseBy([77, 5, 33], 10))
 
 
 
@@ -81,14 +98,14 @@ that takes an array of objects and number as a parameter
 and return a new array with only the object has a value inside 
 the key name longer than this number
 
-var arrOfObj4 = [
+var arrOfObj3= [
   { name: "alex" },
   { name: "mercer"},
   { name: "alice" },
   { name: "zaheer"},
   { name: "elizabeth"}
 ]
-Ex: nameLongerThan(arrOfObj4,4)
+Ex: nameLongerThan(arrOfObj3,4)
 =>[
   { name: "mercer"},
   { name: "alice" },
@@ -96,16 +113,33 @@ Ex: nameLongerThan(arrOfObj4,4)
   { name: "elizabeth"}
 ]
 
-Ex: nameLongerThan(arrOfObj4,6)
+Ex: nameLongerThan(arrOfObj3,6)
 =>[
   { name: "elizabeth"}
 ]
 */
 
-function nameLongerThan() {
-  // WRITE YOUR CODE UNDER THIS LINE         
+function nameLongerThan(array, num) {
+  var result = array.filter(
+    function (elem) {
+      return elem.name.length > num
+    }
+  )
+  return result
 }
-
+console.log(nameLongerThan([{
+    name: "mercer"
+  },
+  {
+    name: "alice"
+  },
+  {
+    name: "zaheer"
+  },
+  {
+    name: "elizabeth"
+  }
+], 6))
 
 
 
@@ -133,9 +167,21 @@ Ex: avgLength(arrOfObj4,"food")
 => 6.8
 */
 
-function avgLength() {
-  // WRITE YOUR CODE UNDER THIS LINE         
-
+function avgLength(array, key) {
+  var result =array.reduce(
+      function (acc, elem) {
+        acc= acc+elem[key].length
+        return acc
+      },0
+    )
+  return result / array.length
 }
-
+var arrOfObj4 = [
+  { name: "alex", food: "fried chiken" },
+  { name: "mercer", food: "pizaa" },
+  { name: "alice", food: "burger" },
+  { name: "zaheer", food: "hot dog" },
+  { name: "elizabeth", food: "eggs" }
+]
+console.log (avgLength(arrOfObj4,'name'))
 // Good luck :)
